@@ -1,7 +1,7 @@
 .body__music-icon_on {
   background-image: url(../../../../images/musicOn.svg);
   background-size: contain;
-  transition:  1s ;
+  transition:  1s;
   animation: flicker 1.5s infinite;
   width: 15px;
   height: 15px;
