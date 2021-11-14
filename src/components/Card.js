@@ -1,5 +1,6 @@
 function  Card (props) {
 
+  //jsx карточек
   function handleClick() {
     props.onCardClick(props.card);
   }

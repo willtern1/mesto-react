@@ -1,4 +1,4 @@
-function  PopupWithForm(props) {
+function  PopupWithForm(props) { //jxs для форм с попапом
     return (
       <div className={`popup popup_type_${props.name} ${props.isOpen ? 'popup_opened' : ''}` }>
         <div className="popup__container ">

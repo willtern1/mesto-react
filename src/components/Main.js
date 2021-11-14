@@ -2,10 +2,11 @@ import React from "react";
 import api from "../utils/Api";
 import Card from "./Card";
 
+//основной jxs
 function  Main (props) {
-  const  [userInfo, setUserInfo] = React.useState({})
+  const  [userInfo, setUserInfo] = React.useState({})     //хуки состояния
   const [cards, setCards] = React.useState([])
-
+    // хук с  промисами  которые пихаются в переменные
   React.useEffect(() => {
     Promise.all([api.getUserInfo(), api.getCardsInfo()]).then(([profileInfo, cards]) => {
         setUserInfo(profileInfo)
@@ -31,7 +32,7 @@ function  Main (props) {
           </section>
 
           <section aria-label="elements" className="elements">
-            {cards.map((card) => (
+            {cards.map((card) => (              // отрисовка каждой карточки с пропсами
               <Card
                 onCardClick={props.onCardClick}
                 card ={card}

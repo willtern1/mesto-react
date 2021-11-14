@@ -1,3 +1,4 @@
+//jsx попапа с картинкой
 function  ImagePopup (props) {
   return (
     <div className={`popup popup_type_image ${props.card ? 'popup_opened' : ''}`}>

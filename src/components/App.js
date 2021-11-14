@@ -9,12 +9,12 @@ import React from "react";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState();
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState();
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState();       //Хуки
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState();
   const [selectedCard, setSelectedCard] = React.useState();
 
 
-
+//Функции состояния  для открытия попчанских
   function openProfilePopup() {
     setIsEditProfilePopupOpen(true)
   }
@@ -30,14 +30,14 @@ function App() {
   function handleCardClick(card) {
     setSelectedCard(card)
   }
-
+//функция закрытия попчанских
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false)
     setIsAddPlacePopupOpen(false)
     setIsEditAvatarPopupOpen(false)
     setSelectedCard(false)
   }
-
+//jsx
   return (
     <div className='App'>
       <button className="body__music-icon " type="button"/>
@@ -46,12 +46,12 @@ function App() {
         <Header/>
         <Main
           editProfilePopup={openProfilePopup}
-          addCardPopup ={openCardAddPopup}
+          addCardPopup ={openCardAddPopup} // Пропсы для открытия попчанских в мейне
           refreshAvatar = {openAvatarPopup}
           onCardClick={handleCardClick}
         />
         <Footer/>
-        <PopupWithForm
+        <PopupWithForm            //Попап профиля с пропсами
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
           name={'edit-profile'}
@@ -72,7 +72,7 @@ function App() {
           }
         />
 
-        <PopupWithForm
+        <PopupWithForm                        //Попап карточек с пропсами
             isOpen = {isAddPlacePopupOpen}
             onClose={closeAllPopups}
             name={'add-place'}
@@ -92,7 +92,7 @@ function App() {
                 )}
         />
 
-        <PopupWithForm
+        <PopupWithForm                                    //Попап аватара с пропсами
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           name={'add-avatar'}
@@ -108,7 +108,7 @@ function App() {
                   )}
         />
 
-        <ImagePopup
+        <ImagePopup                     //Попап с картинкой с пропсами
           card={selectedCard}
           onClose={closeAllPopups}
         />
