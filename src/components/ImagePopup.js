@@ -1,3 +1,5 @@
+import React from "react";
+
 //jsx попапа с картинкой
 function  ImagePopup (props) {
   return (

@@ -1,3 +1,5 @@
+import React from "react";
+
 function  PopupWithForm(props) { //jxs для форм с попапом
     return (
       <div className={`popup popup_type_${props.name} ${props.isOpen ? 'popup_opened' : ''}` }>
