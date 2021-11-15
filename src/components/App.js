@@ -30,6 +30,7 @@ function App() {
   function handleCardClick(card) {
     setSelectedCard(card)
   }
+
 //функция закрытия попчанских
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false)
@@ -37,6 +38,7 @@ function App() {
     setIsEditAvatarPopupOpen(false)
     setSelectedCard({name: '', link: ''})
   }
+
 //jsx
   return (
     <div className='App'>
@@ -46,8 +48,8 @@ function App() {
         <Header/>
         <Main
           editProfilePopup={openProfilePopup}
-          addCardPopup ={openCardAddPopup} // Пропсы для открытия попчанских в мейне
-          refreshAvatar = {openAvatarPopup}
+          addCardPopup={openCardAddPopup} // Пропсы для открытия попчанских в мейне
+          refreshAvatar={openAvatarPopup}
           onCardClick={handleCardClick}
         />
         <Footer/>
@@ -69,7 +71,7 @@ function App() {
         </PopupWithForm>
 
         <PopupWithForm
-          isOpen = {isAddPlacePopupOpen}
+          isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           name={'add-place'}
           buttonText={'Создать'}
