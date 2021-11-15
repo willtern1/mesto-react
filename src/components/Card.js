@@ -8,8 +8,6 @@ function  Card (props) {
   }
 
   return (
-    <template id="template-element" style={{ display: 'flex'}}>
-
       <article className="element">
         <button className="element__trash-button" type="button" aria-label="element__trash-button"/>
         <img className="element__image" src={props.link} alt={props.name}  onClick={handleClick}/>
@@ -19,8 +17,6 @@ function  Card (props) {
           <p className="element__button-likes-counter">{props.likes}</p>
         </div>
       </article>
-
-    </template>
   )
 }
 

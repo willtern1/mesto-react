@@ -34,6 +34,7 @@ function  Main (props) {
           <section aria-label="elements" className="elements">
             {cards.map((card) => (              // отрисовка каждой карточки с пропсами
               <Card
+                key={card._id}
                 onCardClick={props.onCardClick}
                 card ={card}
                 link={card.link}
