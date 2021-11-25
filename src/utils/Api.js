@@ -62,7 +62,7 @@ postCardData(data) {
 }
 
 //удаление карточки
-deteleCard(data) {
+  deleteCard(data) {
     return fetch(
       `${this._url}/cards/${data._id}`,
       {method: 'DELETE',
@@ -91,6 +91,7 @@ deleteLike(id) {
     return this._responseCheck(res)
   })
 }
+
 patchAvatar(data) {
     return fetch(
       `${this._url}/users/me/avatar`,

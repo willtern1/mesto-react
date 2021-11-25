@@ -1,30 +1,18 @@
 import React from "react";
-import api from "../utils/Api";
 import Card from "./Card";
 
 //основной jxs
 function Main(props) {
-  const [userInfo, setUserInfo] = React.useState({})     //хуки состояния
-  const [cards, setCards] = React.useState([])
-  // хук с  промисами  которые пихаются в переменные
-  React.useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getCardsInfo()]).then(([profileInfo, cards]) => {
-      setUserInfo(profileInfo)
-      setCards(cards)
-    }).catch((err) => {
-      alert(`Ошибка загрузки данных :  ${err.status}`)
-    })
-  }, [])
 
   return (
     <main className="content">
 
       <section aria-label="profile" className="profile">
         <div className="profile__avatar-container" onClick={props.refreshAvatar}/>
-        <img className="profile__image" src={userInfo.avatar} alt={userInfo.name}/>
+        <img className="profile__image" src={props.currentUser.avatar} alt={props.currentUser.name}/>
         <div className="profile__info">
-          <h1 className="profile__name">{userInfo.name}</h1>
-          <p className="profile__job">{userInfo.about}</p>
+          <h1 className="profile__name">{props.currentUser.name}</h1>
+          <p className="profile__job">{props.currentUser.about}</p>
           <button aria-label="profile__edit-button" type="button" className="profile__edit-button"
                   onClick={props.editProfilePopup}>
           </button>
@@ -34,7 +22,7 @@ function Main(props) {
       </section>
 
       <section aria-label="elements" className="elements">
-        {cards.map((card) => (              // отрисовка каждой карточки с пропсами
+        {props.cards.map((card) => (              // отрисовка каждой карточки с пропсами
           <Card
             key={card._id}
             onCardClick={props.onCardClick}
@@ -42,6 +30,8 @@ function Main(props) {
             link={card.link}
             name={card.name}
             likes={card.likes.length}
+            onCardLike={props.onCardLike}
+            onCardDelete={props.onCardDelete}
           />
         ))}
       </section>
