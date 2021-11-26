@@ -11,7 +11,7 @@ function EditProfilePopup(props) {
   React.useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
-  }, [currentUser])
+  }, [props.isOpen, currentUser])
 
   // Функция  перезаписи значений переменой setName от инпутов
   function handleChangeName(e) {
@@ -43,11 +43,11 @@ function EditProfilePopup(props) {
       title={'Редактировать профиль'}
     >
       <label htmlFor="name"/><input className="popup__input popup__input_element_name" type="text"
-                                    defaultValue={name} placeholder="Введите имя" id="name" name="name"
+                                    value={name || ""} placeholder="Введите имя" id="name" name="name"
                                     minLength="2" maxLength="40" onChange={handleChangeName}/>
       <span id="name-error" className="popup__error"/>
       <label htmlFor="about"/><input className=" popup__input popup__input_element_job" type="text"
-                                     defaultValue={description} placeholder="Введите профессию" id="about" name="about"
+                                     value={description || ""} placeholder="Введите профессию" id="about" name="about"
                                      minLength="2" maxLength="200" required
                                      onChange={handleChangeDescription}/>
       <span id="about-error" className="popup__error"/>

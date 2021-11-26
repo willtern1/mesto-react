@@ -24,6 +24,13 @@ function AddPlacePopup(props) {
     });
   }
 
+  React.useEffect(() => {
+    if (props.isOpen) {
+      setName('')
+      setLink('')
+    }
+  },[props.isOpen])
+
   return (
     <PopupWithForm
       onSubmit={handleAddPlaceSubmit}
@@ -35,12 +42,12 @@ function AddPlacePopup(props) {
     >
       <label htmlFor="card-name"/><input onChange={handleChangeName} className="popup__input popup__input_element_title"
                                          type="text"
-                                         defaultValue={name} placeholder="Название" id="card-name" name="name"
+                                         value={name || ""} placeholder="Название" id="card-name" name="name"
                                          minLength="2" maxLength="30" required/>
       <span id="card-name-error" className="popup__error"/>
       <label htmlFor="link"/><input onChange={handleChangeLink} className=" popup__input popup__input_element_link"
                                     type="url"
-                                    defaultValue={link} placeholder="Ссылка на картинку" id="link" name="link"
+                                    value={link || ""} placeholder="Ссылка на картинку" id="link" name="link"
                                     required/>
       <span id="link-error" className="popup__error"/>
     </PopupWithForm>

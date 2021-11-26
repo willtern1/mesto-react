@@ -40,7 +40,9 @@ function App() {
   function handleCardDelete(card) {
     api.deleteCard(card).then(() =>
       setCards((list) => list.filter((c) => c._id !== card._id))
-    )
+    ).catch((err) => {
+      alert(`Ошибка удаления карточки : ${err.status}`)
+    })
   }
 
 // хук с  промисами  которые пихаются в переменные
@@ -83,10 +85,10 @@ function App() {
   function handleUpdateUser(data) {
     Promise.resolve(api.pathUserData(data)).then((profileInfo) => {
       setCurrentUser(profileInfo)
+      closeAllPopups()
     }).catch((err) => {
       alert(`Ошибка загрузки данных :  ${err.status}`)
-    }).finally(() => {
-      closeAllPopups();
+      openProfilePopup()
     })
   }
 
@@ -94,10 +96,10 @@ function App() {
   function handleUpdateAvatar(data) {
     Promise.resolve(api.patchAvatar(data)).then((avatar) => {
       setCurrentUser(avatar)
+      closeAllPopups()
     }).catch((err) => {
       alert(`Ошибка обновления аватара : ${err.status}`)
-    }).finally(() => {
-      closeAllPopups()
+      openAvatarPopup()
     })
   }
 
@@ -105,10 +107,10 @@ function App() {
   function handleUpdateCard(data) {
     Promise.resolve(api.postCardData(data)).then((card) => {
       setCards([card, ...cards]);
+      closeAllPopups()
     }).catch((err) => {
       alert(`Ошибка добавления карточки  ${err.status}`)
-    }).finally(() => {
-      closeAllPopups()
+      openCardAddPopup()
     })
   }
 
