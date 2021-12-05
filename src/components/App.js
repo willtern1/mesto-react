@@ -74,7 +74,7 @@ function App() {
   }
 
 //функция закрытия попчанских
-  function closeAllPopups() {
+function closeAllPopups() {
     setIsEditProfilePopupOpen(false)
     setIsAddPlacePopupOpen(false)
     setIsEditAvatarPopupOpen(false)
@@ -114,9 +114,26 @@ function App() {
     })
   }
 
+  React.useEffect(() => {
+    document.addEventListener('keydown', (evt) => {
+      if ( evt.keyCode === 27 ) {
+        console.log('ahahahaha')
+        closeAllPopups()
+      }
+    })
+  },[])
+
+  React.useEffect(() => {
+    document.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup')) {
+        closeAllPopups()
+      }
+    })
+  },[])
+
 //jsx
   return (
-    <div className='App' style={{width: '100%'}}>
+    <div className='App' style={{width: '100%'}} >
       <button className="body__music-icon " type="button"/>
       <div className="page">
         <audio className="audio" src="../sound/The_Mole_320kbps.mp3" type="audio/mpeg" loop/>
@@ -133,8 +150,8 @@ function App() {
             onCardDelete={handleCardDelete}
           />
           <Footer/>
-          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/>
-          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
+          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
+          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
           <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onUpdateCard={handleUpdateCard}/>
           <ImagePopup
             card={selectedCard}

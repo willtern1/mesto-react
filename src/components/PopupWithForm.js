@@ -8,7 +8,7 @@ function PopupWithForm(props) { //jxs для форм с попапом
         <form onSubmit={props.onSubmit} className={`popup__form popup__form_type_${props.name}`} name={`${props.name}-popup`}>
           <h2 className="popup__title ">{props.title}</h2>
           {props.children}
-          <button className="popup__button " type="submit">{props.buttonText}</button>
+          <button className={`popup__button ${ props.buttonState ? '' : `popup__button_invalid`}`} type="submit"  disabled={!props.buttonState}>{props.buttonText}</button>
         </form>
       </div>
     </div>
